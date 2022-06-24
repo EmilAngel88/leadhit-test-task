@@ -14,30 +14,23 @@ export default {
   data() {
     return {
       data,
+      dataForChart: [],
     };
   },
   mounted() {
-    let a = [];
     data.map((el) => {
       let Obj = {
         date: Date.parse(el.date),
         value: el.value,
       };
-      a.push(Obj);
+      this.dataForChart.push(Obj);
     });
-    console.log(a);
 
-    // Create root element
-    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-    var root = am5.Root.new(this.$refs.chartdiv);
+    let root = am5.Root.new(this.$refs.chartdiv);
 
-    // Set themes
-    // https://www.amcharts.com/docs/v5/concepts/themes/
     root.setThemes([am5themes_Animated.new(root)]);
 
-    // Create chart
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/
-    var chart = root.container.children.push(
+    let chart = root.container.children.push(
       am5xy.XYChart.new(root, {
         panX: true,
         panY: true,
@@ -47,9 +40,7 @@ export default {
       })
     );
 
-    // Add cursor
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-    var cursor = chart.set(
+    let cursor = chart.set(
       "cursor",
       am5xy.XYCursor.new(root, {
         behavior: "none",
@@ -57,31 +48,7 @@ export default {
     );
     cursor.lineY.set("visible", false);
 
-    // Generate random data
-    // var date = new Date();
-    // date.setHours(0, 0, 0, 0);
-    // var value = 100;
-
-    // function generateData() {
-    //   value = Math.round(Math.random() * 10 - 5 + value);
-    //   am5.time.add(date, "day", 1);
-    //   return {
-    //     date: date.getTime(),
-    //     value: value,
-    //   };
-    // }
-
-    // function generateDatas(count) {
-    //   var data = [];
-    //   for (var i = 0; i < count; ++i) {
-    //     data.push(generateData());
-    //   }
-    //   return data;
-    // }
-
-    // Create axes
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-    var xAxis = chart.xAxes.push(
+    let xAxis = chart.xAxes.push(
       am5xy.DateAxis.new(root, {
         maxDeviation: 0.5,
         baseInterval: {
@@ -95,7 +62,7 @@ export default {
       })
     );
 
-    var yAxis = chart.yAxes.push(
+    let yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
         maxDeviation: 1,
         renderer: am5xy.AxisRendererY.new(root, {
@@ -104,9 +71,7 @@ export default {
       })
     );
 
-    // Add series
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-    var series = chart.series.push(
+    let series = chart.series.push(
       am5xy.SmoothedXLineSeries.new(root, {
         name: "Series",
         xAxis: xAxis,
@@ -136,8 +101,6 @@ export default {
       });
     });
 
-    // Add scrollbar
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
     chart.set(
       "scrollbarX",
       am5.Scrollbar.new(root, {
@@ -146,13 +109,10 @@ export default {
     );
 
     // var data = generateDatas(50);
-    series.data.setAll(a);
+    series.data.setAll(this.dataForChart);
 
-    // Make stuff animate on load
-    // https://www.amcharts.com/docs/v5/concepts/animations/
     series.appear(1000);
     chart.appear(1000, 100);
-    // console.log(data);
   },
 
   beforeDestroy() {
@@ -163,7 +123,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .hello {
   width: 100%;
