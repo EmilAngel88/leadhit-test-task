@@ -27,7 +27,10 @@
         <button
           :class="{
             'authorization__form_btn-disabled': isButtonDisable,
+            authorization__form_btn_pressing: isButtonDown,
           }"
+          @mousedown="isButtonDown = !isButtonDown"
+          @mouseup="isButtonDown = !isButtonDown"
           class="authorization__form_btn"
           type="submit"
         >
@@ -45,6 +48,7 @@ export default {
     return {
       id: "5f8475902b0be670555f1bb3",
       error: false,
+      isButtonDown: false,
     };
   },
   methods: {
@@ -165,6 +169,10 @@ export default {
         &:hover {
           transform: scale(1);
         }
+      }
+
+      &_pressing {
+        background-color: rgba(89, 130, 83, 1);
       }
     }
   }

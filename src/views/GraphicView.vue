@@ -38,11 +38,16 @@ export default {
 .graphic {
   max-width: 1440px;
   width: 100%;
+  padding: 24px;
+  border-radius: 4px;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.02);
 
   &__heading {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin-bottom: 40px;
   }
 
   &__logout {
