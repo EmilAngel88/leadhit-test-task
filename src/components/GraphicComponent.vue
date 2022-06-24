@@ -18,25 +18,14 @@ export default {
   },
   mounted() {
     let a = [];
-    for (let index = 0; index < this.data.length; index++) {
+    data.map((el) => {
       let Obj = {
-        date: Date.parse(this.data[index].date),
-        value: this.data[index].value,
+        date: Date.parse(el.date),
+        value: el.value,
       };
       a.push(Obj);
-    }
+    });
     console.log(a);
-    /**
-     * ---------------------------------------
-     * This demo was created using amCharts 5.
-     *
-     * For more information visit:
-     * https://www.amcharts.com/
-     *
-     * Documentation is available at:
-     * https://www.amcharts.com/docs/v5/
-     * ---------------------------------------
-     */
 
     // Create root element
     // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -96,7 +85,7 @@ export default {
       am5xy.DateAxis.new(root, {
         maxDeviation: 0.5,
         baseInterval: {
-          timeUnit: "",
+          timeUnit: "day",
           count: 1,
         },
         renderer: am5xy.AxisRendererX.new(root, {
