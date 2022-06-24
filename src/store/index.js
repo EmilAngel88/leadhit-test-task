@@ -20,6 +20,11 @@ export default new Vuex.Store({
       localStorage.setItem('leadhit-site-id', JSON.stringify(payload))
       router.push("/graphic");
     },
+    logOut(state) {
+      state.data = ''
+      localStorage.removeItem('leadhit-site-id')
+      router.push("/");
+    },
   },
   actions: {
     async fetchData({ commit }, payload) {
