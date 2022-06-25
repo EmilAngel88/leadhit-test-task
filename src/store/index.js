@@ -10,7 +10,7 @@ export default new Vuex.Store({
     data: JSON.parse(localStorage.getItem('leadhit-site-id')) || '',
   },
   getters: {
-    getData: (state) => {
+    getAuth: (state) => {
       return state.data
     },
   },

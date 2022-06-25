@@ -36,7 +36,7 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.title ? to.meta.title : "Нет такой страницы"
 
   const requireAuth = to.matched.some(record => record.meta.auth)
-  const isUserAuth = store.getters.getData
+  const isUserAuth = store.getters.getAuth
 
   if (requireAuth && !isUserAuth) {
     next('/')
