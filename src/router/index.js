@@ -40,7 +40,6 @@ router.beforeEach((to, from, next) => {
 
   if (requireAuth && !isUserAuth) {
     next('/')
-    console.log(isUserAuth)
   } else {
     next()
   }
