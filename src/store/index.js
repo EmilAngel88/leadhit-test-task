@@ -27,7 +27,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async fetchData({ commit }, payload) {
+    async logIn({ commit }, payload) {
       return await axios.get(`https://track-api.leadhit.io/client/test_auth`, {
         headers: {
           'Content-Type': 'application/json',
