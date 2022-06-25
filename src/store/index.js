@@ -18,7 +18,7 @@ export default new Vuex.Store({
     setData(state, payload) {
       state.data = payload
       localStorage.setItem('leadhit-site-id', JSON.stringify(payload))
-      router.push("/graphic");
+      router.push("/analytics");
     },
     logOut(state) {
       state.data = ''

@@ -26,11 +26,6 @@ export default {
       this.$store.commit("logOut");
     },
   },
-  created() {
-    if (!this.getData) {
-      this.$router.push("/");
-    }
-  },
 };
 </script>
 
