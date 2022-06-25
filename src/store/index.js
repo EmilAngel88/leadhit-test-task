@@ -15,7 +15,7 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    setData(state, payload) {
+    setAuth(state, payload) {
       state.data = payload
       localStorage.setItem('leadhit-site-id', JSON.stringify(payload))
       router.push("/analytics");
@@ -37,7 +37,7 @@ export default new Vuex.Store({
         },
       }).then((res) => {
         const data = res.config.headers['leadhit-site-id']
-        commit("setData", data);
+        commit("setAuth", data);
       }).catch(err => console.log(err));
     },
 

@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getData: "getData",
+      getAuth: "getAuth",
     }),
   },
   methods: {
